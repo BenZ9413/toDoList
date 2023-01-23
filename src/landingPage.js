@@ -1,9 +1,12 @@
+import addButtonFunctionalityToLandingPage from "./btnEventHandler";
+
 const body = document.querySelector("body");
 
 const loadLandingPage = function () {
   createHeader();
   createMain();
   createFooter();
+  addButtonFunctionalityToLandingPage();
 };
 
 const createHeader = function () {
