@@ -1,3 +1,4 @@
 import "./css.css";
+import loadLandingPage from "./landingPage";
 
-console.log("Up and running...");
+loadLandingPage();
