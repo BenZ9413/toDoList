@@ -1,4 +1,4 @@
-import showTaskPopUp from "./popUp";
+import { showTaskPopUp } from "./popUp";
 
 const addButtonFunctionalityToLandingPage = function () {
   btnNewTaskClick();
