@@ -23,6 +23,7 @@ const formInputs = {
 const createTaskPopUp = function () {
   const body = document.querySelector("body");
   const popUpForm = document.createElement("form");
+  popUpForm.setAttribute("id", "taskPopUp");
   for (let i = 0; i < formInputs.ids.length; i++) {
     const newInputField = document.createElement("input");
     for (let j = 0; j < formInputs.attributes.length; j++) {
