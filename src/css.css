@@ -1,3 +1,48 @@
 html {
   height: 100%;
 }
+
+/* ---- Task PopUp ---- */
+#taskPopUp {
+  width: 500px;
+  display: grid;
+  grid-template: 2fr 1fr 4fr 1fr / 1fr 1fr 1fr;
+  grid-template-areas:
+    "taskName taskName taskName"
+    "projectName priority dueDate"
+    "description description description"
+    ". btnSave .";
+  position: relative;
+}
+
+#formTask {
+  grid-area: taskName;
+}
+
+#formProject {
+  grid-area: projectName;
+  width: 150px;
+}
+
+#formPriority {
+  grid-area: priority;
+  width: 150px;
+}
+#formDuedate {
+  grid-area: dueDate;
+  width: 150px;
+}
+
+#formDescription {
+  grid-area: description;
+}
+
+#popUpSaveBtn {
+  grid-area: btnSave;
+}
+
+#popUpCancelBtn {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
