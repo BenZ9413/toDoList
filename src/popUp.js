@@ -20,7 +20,7 @@ const formInputs = {
   ],
 };
 
-const createTaskPopUp = function () {
+const createTaskPopUpWrite = function () {
   const body = document.querySelector("body");
   const popUpForm = document.createElement("form");
   popUpForm.setAttribute("id", "taskPopUp");
@@ -60,12 +60,14 @@ const createPopUpCancelButton = function () {
   return cancelButton;
 };
 
-const showTaskPopUp = function () {
+const showTaskPopUpWrite = function () {
   alert("Task PopUp");
 };
 
-const hideTaskPopUp = function () {
+const discardTaskPopUpWrite = function (event) {
+  event.preventDefault();
+  console.log(event);
   alert("Hide");
 };
 
-export { createTaskPopUp, showTaskPopUp, hideTaskPopUp };
+export { createTaskPopUpWrite, showTaskPopUpWrite, discardTaskPopUpWrite };

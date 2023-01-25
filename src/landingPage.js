@@ -1,4 +1,3 @@
-import { createTaskPopUp } from "./popUp";
 import { addButtonFunctionalityToLandingPage } from "./btnEventHandler";
 
 const body = document.querySelector("body");
@@ -7,7 +6,6 @@ const loadLandingPage = function () {
   createHeader();
   createMain();
   createFooter();
-  createTaskPopUp();
   addButtonFunctionalityToLandingPage();
 };
 

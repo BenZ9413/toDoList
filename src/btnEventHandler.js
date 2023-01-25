@@ -1,4 +1,5 @@
-import { showTaskPopUp } from "./popUp";
+import { createTaskPopUpWrite } from "./popUp";
+import { discardTaskPopUpWrite } from "./popUp";
 
 const addButtonFunctionalityToLandingPage = function () {
   btnNewTaskClick();
@@ -6,7 +7,7 @@ const addButtonFunctionalityToLandingPage = function () {
 
 const btnNewTaskClick = function () {
   const btnNewTask = document.querySelector("#btnNewTask");
-  btnNewTask.addEventListener("click", showTaskPopUp);
+  btnNewTask.addEventListener("click", createTaskPopUpWrite);
 };
 
 const addEventListenersToPopUpForm = function () {
@@ -23,8 +24,8 @@ const btnSaveTaskPopUp = function () {
 
 const btnCancelTaskPopUp = function () {
   const btn = document.querySelector("#popUpCancelBtn");
-  btn.addEventListener("click", () => {
-    alert("cancel");
+  btn.addEventListener("click", (e) => {
+    discardTaskPopUpWrite(e);
   });
 };
 
