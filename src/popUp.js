@@ -1,3 +1,5 @@
+import { addEventListenersToPopUpForm } from "./btnEventHandler";
+
 const formInputs = {
   attributes: ["type", "id", "placeholder"],
   attributeKeys: ["types", "ids", "placeholders"],
@@ -31,11 +33,30 @@ const createTaskPopUp = function () {
     }
     popUpForm.appendChild(newInputField);
   }
+  popUpForm.appendChild(createPopUpSaveButton());
+  popUpForm.appendChild(createPopUpCancelButton());
   body.appendChild(popUpForm);
+
+  addEventListenersToPopUpForm();
 
   //document.querySelector(
   //  "#formDuedate"
   //).defaultValue = `${new Date().getDate()}.${new Date().getMonth()}.${new Date().getFullYear()}`;
+};
+
+const createPopUpSaveButton = function () {
+  const saveButton = document.createElement("button");
+  saveButton.setAttribute("id", "popUpSaveBtn");
+  saveButton.setAttribute("type", "submit");
+  saveButton.textContent = "Save";
+  return saveButton;
+};
+
+const createPopUpCancelButton = function () {
+  const cancelButton = document.createElement("button");
+  cancelButton.setAttribute("id", "popUpCancelBtn");
+  cancelButton.textContent = "X";
+  return cancelButton;
 };
 
 const showTaskPopUp = function () {

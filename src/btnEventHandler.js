@@ -9,4 +9,23 @@ const btnNewTaskClick = function () {
   btnNewTask.addEventListener("click", showTaskPopUp);
 };
 
-export default addButtonFunctionalityToLandingPage;
+const addEventListenersToPopUpForm = function () {
+  btnSaveTaskPopUp();
+  btnCancelTaskPopUp();
+};
+
+const btnSaveTaskPopUp = function () {
+  const btn = document.querySelector("#popUpSaveBtn");
+  btn.addEventListener("click", () => {
+    alert("saving...");
+  });
+};
+
+const btnCancelTaskPopUp = function () {
+  const btn = document.querySelector("#popUpCancelBtn");
+  btn.addEventListener("click", () => {
+    alert("cancel");
+  });
+};
+
+export { addButtonFunctionalityToLandingPage, addEventListenersToPopUpForm };

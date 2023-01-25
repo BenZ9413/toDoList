@@ -1,5 +1,5 @@
 import { createTaskPopUp } from "./popUp";
-import addButtonFunctionalityToLandingPage from "./btnEventHandler";
+import { addButtonFunctionalityToLandingPage } from "./btnEventHandler";
 
 const body = document.querySelector("body");
 
