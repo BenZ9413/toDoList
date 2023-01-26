@@ -21,6 +21,8 @@ const formInputs = {
 };
 
 const createTaskPopUpWrite = function () {
+  if (document.querySelector("#taskPopUp")) return;
+
   const body = document.querySelector("body");
   const popUpForm = document.createElement("form");
   popUpForm.setAttribute("id", "taskPopUp");
@@ -66,8 +68,7 @@ const showTaskPopUpWrite = function () {
 
 const discardTaskPopUpWrite = function (event) {
   event.preventDefault();
-  console.log(event);
-  alert("Hide");
+  event.target.form.remove();
 };
 
 export { createTaskPopUpWrite, showTaskPopUpWrite, discardTaskPopUpWrite };
