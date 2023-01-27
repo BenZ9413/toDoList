@@ -1,6 +1,11 @@
 import { addButtonFunctionalityToLandingPage } from "./btnEventHandler";
+import ToDoList from "./toDoListObject";
 
 const body = document.querySelector("body");
+
+const todo = new ToDoList();
+todo.addProject("hjkl");
+todo.addProject("hjkl");
 
 const loadLandingPage = function () {
   createHeader();
