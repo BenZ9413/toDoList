@@ -1,5 +1,6 @@
 import { createTaskPopUpWrite } from "./popUp";
 import { discardTaskPopUpWrite } from "./popUp";
+import { saveOrUpdateTask } from "./toDoListManager";
 
 const addButtonFunctionalityToLandingPage = function () {
   btnNewTaskClick();
@@ -17,14 +18,17 @@ const addEventListenersToPopUpForm = function () {
 
 const btnSaveTaskPopUp = function () {
   const btn = document.querySelector("#popUpSaveBtn");
-  btn.addEventListener("click", () => {
-    alert("saving...");
+  btn.addEventListener("click", (e) => {
+    e.preventDefault();
+    saveOrUpdateTask(e);
+    discardTaskPopUpWrite(e);
   });
 };
 
 const btnCancelTaskPopUp = function () {
   const btn = document.querySelector("#popUpCancelBtn");
   btn.addEventListener("click", (e) => {
+    e.preventDefault();
     discardTaskPopUpWrite(e);
   });
 };

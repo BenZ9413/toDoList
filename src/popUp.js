@@ -67,7 +67,6 @@ const showTaskPopUpWrite = function () {
 };
 
 const discardTaskPopUpWrite = function (event) {
-  event.preventDefault();
   event.target.form.remove();
 };
 
