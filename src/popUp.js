@@ -11,13 +11,7 @@ const formInputs = {
     "formDuedate",
     "formDescription",
   ],
-  names: [
-    "formTask",
-    "formProject",
-    "formPriority",
-    "formDuedate",
-    "formDescription",
-  ],
+  names: ["task", "project", "priority", "duedate", "description"],
   placeholders: [
     "Enter task name",
     "Project",
