@@ -1,10 +1,17 @@
 import { addEventListenersToPopUpForm } from "./btnEventHandler";
 
 const formInputs = {
-  attributes: ["type", "id", "placeholder"],
-  attributeKeys: ["types", "ids", "placeholders"],
+  attributes: ["type", "id", "name", "placeholder"],
+  attributeKeys: ["types", "ids", "names", "placeholders"],
   types: ["text", "text", "select", "date", "textarea"],
   ids: [
+    "formTask",
+    "formProject",
+    "formPriority",
+    "formDuedate",
+    "formDescription",
+  ],
+  names: [
     "formTask",
     "formProject",
     "formPriority",
