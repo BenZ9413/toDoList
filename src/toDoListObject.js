@@ -1,7 +1,11 @@
+import Project from "./projectObject";
+
 class ToDoList {
-  constructor() {
-    this.listOfProjects = {};
-  }
+  constructor() {}
+
+  addProject = (projectName) => {
+    this[`${projectName}`] = new Project();
+  };
 }
 
 const masterToDoList = new ToDoList();

@@ -4,12 +4,12 @@ const formValues = {};
 
 const saveOrUpdateTask = (e) => {
   extractFormValues(e);
-  saveProjectAndTaskIfProjectIsNew();
-  // addProjectIfNew(form.elements["project"].value);
-  // console.log(form.elements["formTask"].value);
-  // alert("Saving or updating...");
-  // console.log(e.target.form);
-  // console.log(masterToDoList);
+  if (projectExists()) {
+    alert("project exists already");
+    //updateProjectAndTask();
+  } else {
+    saveProjectAndTask();
+  }
 };
 
 const extractFormValues = (e) => {
@@ -20,29 +20,37 @@ const extractFormValues = (e) => {
   }
 };
 
-const saveProjectAndTaskIfProjectIsNew = () => {
-  if (projectExists()) return;
-  addProject();
-  addTaskToProject();
-  console.log(masterToDoList);
+const saveProjectAndTask = () => {
+  addNewProject();
+  addNewTaskToProject();
+  updateTaskDetails();
 };
 
 const projectExists = () => {
-  for (const projects in masterToDoList.listOfProjects) {
-    if (masterToDoList.listOfProjects[projects] == formValues["project"])
-      return true;
+  for (const projects in masterToDoList) {
+    if (projects == formValues["project"]) return true;
   }
   return false;
 };
 
-const addProject = () => {
-  masterToDoList.listOfProjects[`${formValues["project"]}`] = {};
+const addNewProject = () => {
+  masterToDoList.addProject(`${formValues["project"]}`);
 };
 
-const addTaskToProject = () => {
-  masterToDoList.listOfProjects[`${formValues["project"]}`][
+const addNewTaskToProject = () => {
+  masterToDoList[`${formValues["project"]}`]["addTask"](
     `${formValues["task"]}`
-  ] = {};
+  );
+};
+
+const updateTaskDetails = () => {
+  masterToDoList[`${formValues["project"]}`][`${formValues["task"]}`][
+    "updateTaskDetails"
+  ](
+    `${formValues["priority"]}`,
+    `${formValues["duedate"]}`,
+    `${formValues["description"]}`
+  );
 };
 
 const removeProject = (projectName) => {
