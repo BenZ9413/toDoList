@@ -2,13 +2,12 @@ import masterToDoList from "./toDoListObject";
 
 const formValues = {};
 
-const saveOrUpdateTask = (e) => {
+const processAndSaveInputValues = (e) => {
   extractFormValues(e);
   if (projectExists()) {
-    alert("project exists already");
-    //updateProjectAndTask();
+    saveOrUpdateTask();
   } else {
-    saveProjectAndTask();
+    saveNewProjectAndTask();
   }
 };
 
@@ -20,7 +19,12 @@ const extractFormValues = (e) => {
   }
 };
 
-const saveProjectAndTask = () => {
+const saveOrUpdateTask = () => {
+  if (!taskExists()) addNewTaskToProject();
+  updateTaskDetails();
+};
+
+const saveNewProjectAndTask = () => {
   addNewProject();
   addNewTaskToProject();
   updateTaskDetails();
@@ -29,6 +33,13 @@ const saveProjectAndTask = () => {
 const projectExists = () => {
   for (const projects in masterToDoList) {
     if (projects == formValues["project"]) return true;
+  }
+  return false;
+};
+
+const taskExists = () => {
+  for (const tasks in masterToDoList[`${formValues["project"]}`]) {
+    if (tasks == formValues["task"]) return true;
   }
   return false;
 };
@@ -61,4 +72,4 @@ const update = () => {
   console.log("updatingToDoList");
 };
 
-export { saveOrUpdateTask };
+export { processAndSaveInputValues };
