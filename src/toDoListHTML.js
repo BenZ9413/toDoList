@@ -1,6 +1,6 @@
 import masterToDoList from "./toDoListObject";
 
-const main = document.querySelector("main");
+const main = document.querySelector("#main");
 
 const displayToDoList = () => {
   deleteOldToDoList();
@@ -8,6 +8,7 @@ const displayToDoList = () => {
 };
 
 const deleteOldToDoList = () => {
+  if (document.getElementById("#toDoList") == null) return;
   document.getElementById("#toDoList").remove();
 };
 
