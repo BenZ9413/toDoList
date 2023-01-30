@@ -1,6 +1,6 @@
 import { createTaskPopUpWrite } from "./popUp";
 import { discardTaskPopUpWrite } from "./popUp";
-import { saveOrUpdateTask } from "./toDoListManager";
+import { processAndSaveInputValues } from "./toDoListManager";
 
 const addButtonFunctionalityToLandingPage = function () {
   btnNewTaskClick();
@@ -20,7 +20,7 @@ const btnSaveTaskPopUp = function () {
   const btn = document.querySelector("#popUpSaveBtn");
   btn.addEventListener("click", (e) => {
     e.preventDefault();
-    saveOrUpdateTask(e);
+    processAndSaveInputValues(e);
     discardTaskPopUpWrite(e);
   });
 };
