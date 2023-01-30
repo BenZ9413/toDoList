@@ -1,6 +1,7 @@
 import { createTaskPopUpWrite } from "./popUp";
 import { discardTaskPopUpWrite } from "./popUp";
 import { processAndSaveInputValues } from "./toDoListManager";
+import displayToDoList from "./toDoListHTML";
 
 const addButtonFunctionalityToLandingPage = function () {
   btnNewTaskClick();
@@ -22,6 +23,7 @@ const btnSaveTaskPopUp = function () {
     e.preventDefault();
     processAndSaveInputValues(e);
     discardTaskPopUpWrite(e);
+    displayToDoList();
   });
 };
 
