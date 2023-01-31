@@ -82,3 +82,57 @@ footer {
   top: 5px;
   right: 5px;
 }
+
+/* ---- ToDoList HTML ---- */
+
+#toDoList {
+  display: flex;
+  flex-direction: column;
+}
+
+.projectContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.projectHeader {
+}
+
+.projectContent {
+  display: flex;
+  flex-direction: column;
+}
+
+.taskContainer {
+  display: grid;
+  grid-template: 1fr 1fr / 0.5fr 2fr 1fr 1fr 0.5fr 0.5fr;
+  grid-template-areas: "checkbox taskName priority dueDate btnUpdate btnDelete" ". description description description . .";
+}
+
+.taskCheckbox {
+  grid-area: checkbox;
+}
+
+.taskName {
+  grid-area: taskName;
+}
+
+.taskPriority {
+  grid-area: priority;
+}
+
+.taskDueDate {
+  grid-area: dueDate;
+}
+
+.btnUpdate {
+  grid-area: btnUpdate;
+}
+
+.btnDelete {
+  grid-area: btnDelete;
+}
+
+.taskDescription {
+  grid-area: description;
+}
