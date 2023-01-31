@@ -1,8 +1,10 @@
 import masterToDoList from "./toDoListObject";
+import { addEventListenersToTaskButtons } from "./btnEventHandler";
 
 const displayToDoList = () => {
   deleteOldToDoList();
   showUpdatedToDoList();
+  addEventListenersToTaskButtons();
 };
 
 const deleteOldToDoList = () => {
@@ -51,7 +53,7 @@ const showUpdatedToDoList = () => {
           taskDescription.setAttribute("class", "taskDescription");
           taskDescription.textContent = masterToDoList[projects][`${tasks}`][
             "description"
-          ].slice(0, 5);
+          ].slice(0, 50);
 
           taskContainer.appendChild(taskCheckbox);
           taskContainer.appendChild(taskName);
