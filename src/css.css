@@ -113,6 +113,18 @@ footer {
   grid-area: checkbox;
 }
 
+.taskCheckbox:checked ~ .taskName,
+.taskCheckbox:checked ~ .taskPriority,
+.taskCheckbox:checked ~ .taskDueDate,
+.taskCheckbox:checked ~ .taskDescription {
+  color: grey;
+}
+
+.taskCheckbox:checked ~ .btnDelete,
+.taskCheckbox:checked ~ .btnUpdate {
+  opacity: 0.5;
+}
+
 .taskName {
   grid-area: taskName;
 }
