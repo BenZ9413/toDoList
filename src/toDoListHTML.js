@@ -1,18 +1,17 @@
 import masterToDoList from "./toDoListObject";
 
-const main = document.querySelector("#main");
-
 const displayToDoList = () => {
   deleteOldToDoList();
   showUpdatedToDoList();
 };
 
 const deleteOldToDoList = () => {
-  if (document.getElementById("#toDoList") == null) return;
-  document.getElementById("#toDoList").remove();
+  if (document.querySelector("#toDoList") == null) return;
+  document.querySelector("#toDoList").remove();
 };
 
 const showUpdatedToDoList = () => {
+  const main = document.querySelector("main");
   const toDoListContainer = document.createElement("div");
   toDoListContainer.setAttribute("id", "toDoList");
   for (const projects in masterToDoList) {
@@ -28,17 +27,20 @@ const showUpdatedToDoList = () => {
         if (tasks !== "addTask") {
           const taskContainer = document.createElement("div");
           taskContainer.setAttribute("class", "taskContainer");
-          const taskCheckbox = document.createElement("checkbox");
+          const taskCheckbox = document.createElement("input");
+          taskCheckbox.setAttribute("type", "checkbox");
           taskCheckbox.setAttribute("class", "taskCheckbox");
           const taskName = document.createElement("div");
           taskName.setAttribute("class", "taskName");
           taskName.textContent = `${tasks}`;
           const taskPriority = document.createElement("div");
           taskPriority.setAttribute("class", "taskPriority");
-          taskPriority.textContent = `${tasks["priority"]}`;
+          taskPriority.textContent =
+            masterToDoList[projects][`${tasks}`]["priority"];
           const taskDueDate = document.createElement("div");
           taskDueDate.setAttribute("class", "taskDueDate");
-          taskDueDate.textContent = `${tasks["dueDate"]}`;
+          taskDueDate.textContent =
+            masterToDoList[projects][`${tasks}`]["dueDate"];
           const btnUpdate = document.createElement("button");
           btnUpdate.setAttribute("class", "btnUpdate");
           btnUpdate.textContent = "upd";
@@ -47,7 +49,9 @@ const showUpdatedToDoList = () => {
           btnDelete.textContent = "del";
           const taskDescription = document.createElement("div");
           taskDescription.setAttribute("class", "taskDescription");
-          taskDescription.textContent = `${tasks["description"]}`.slice(0, 5);
+          taskDescription.textContent = masterToDoList[projects][`${tasks}`][
+            "description"
+          ].slice(0, 5);
 
           taskContainer.appendChild(taskCheckbox);
           taskContainer.appendChild(taskName);
