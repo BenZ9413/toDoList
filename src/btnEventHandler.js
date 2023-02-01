@@ -3,6 +3,7 @@ import { discardTaskPopUpWrite } from "./popUp";
 import { processAndSaveInputValues } from "./toDoListManager";
 import { deleteTaskFromProject } from "./toDoListManager";
 import { deleteProjectFromToDoList } from "./toDoListManager";
+import { projectHasNoTasksLeft } from "./toDoListManager";
 import displayToDoList from "./toDoListHTML";
 
 const addButtonFunctionalityToLandingPage = function () {
@@ -70,9 +71,7 @@ const addEventListenerToDeleteButton = () => {
   for (const deleteBtn of deleteButtons) {
     deleteBtn.addEventListener("click", (e) => {
       deleteTaskFromProject(e);
-      // Check if project has any tasks left and only then delete project
-      deleteProjectFromToDoList(e);
-      // delete the project from toDoList if it`s the last task which has been deleted
+      if (projectHasNoTasksLeft(e)) deleteProjectFromToDoList(e);
       displayToDoList();
     });
   }

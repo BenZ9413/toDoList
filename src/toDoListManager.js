@@ -11,10 +11,6 @@ const processAndSaveInputValues = (e) => {
   }
 };
 
-const deleteTaskAndShowUpdatedToDoList = (e) => {
-  deleteTaskFromProject(e);
-};
-
 const extractFormValues = (e) => {
   const form = e.target.form;
   const listOfInputs = form.querySelectorAll("input");
@@ -57,6 +53,12 @@ const deleteProjectFromToDoList = (e) => {
   masterToDoList.deleteProject(projectName);
 };
 
+const projectHasNoTasksLeft = (e) => {
+  const projectName = e.target.parentNode.parentNode.parentNode.id;
+  if (Object.keys(masterToDoList[projectName]).length < 3) return true;
+  return false;
+};
+
 const addNewTaskToProject = () => {
   masterToDoList[`${formValues["project"]}`]["addTask"](
     `${formValues["task"]}`
@@ -79,16 +81,9 @@ const updateTaskDetails = () => {
   );
 };
 
-const removeProject = (projectName) => {
-  console.log("removeProject");
-};
-
-const update = () => {
-  console.log("updatingToDoList");
-};
-
 export {
   processAndSaveInputValues,
   deleteTaskFromProject,
   deleteProjectFromToDoList,
+  projectHasNoTasksLeft,
 };
