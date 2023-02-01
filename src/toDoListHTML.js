@@ -17,7 +17,7 @@ const showUpdatedToDoList = () => {
   const toDoListContainer = document.createElement("div");
   toDoListContainer.setAttribute("id", "toDoList");
   for (const projects in masterToDoList) {
-    if (projects !== "addProject") {
+    if (projects !== "addProject" && projects !== "deleteProject") {
       const projectContainer = document.createElement("div");
       projectContainer.setAttribute("id", `${projects}`);
       const projectHeader = document.createElement("div");
