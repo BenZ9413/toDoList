@@ -17,6 +17,7 @@ const showUpdatedToDoList = () => {
   const toDoListContainer = document.createElement("div");
   toDoListContainer.setAttribute("id", "toDoList");
   for (const projects in masterToDoList) {
+    // Code optimization: check is not dynamic enough.
     if (projects !== "addProject" && projects !== "deleteProject") {
       const projectContainer = document.createElement("div");
       projectContainer.setAttribute("id", `${projects}`);
@@ -26,6 +27,7 @@ const showUpdatedToDoList = () => {
       const projectContent = document.createElement("div");
       projectContent.setAttribute("class", "projectContent");
       for (const tasks in masterToDoList[projects]) {
+        // Code optimization: check is not dynamic enough.
         if (tasks !== "addTask" && tasks !== "deleteTask") {
           const taskContainer = document.createElement("div");
           taskContainer.setAttribute("class", "taskContainer");

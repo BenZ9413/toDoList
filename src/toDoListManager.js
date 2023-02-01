@@ -48,11 +48,13 @@ const addNewProject = () => {
   masterToDoList.addProject(`${formValues["project"]}`);
 };
 
+// Code optimization: projectName not dynamic enough.
 const deleteProjectFromToDoList = (e) => {
   const projectName = e.target.parentNode.parentNode.parentNode.id;
   masterToDoList.deleteProject(projectName);
 };
 
+// Code optimization: check against length not dynamic enough.
 const projectHasNoTasksLeft = (e) => {
   const projectName = e.target.parentNode.parentNode.parentNode.id;
   if (Object.keys(masterToDoList[projectName]).length < 3) return true;
@@ -65,6 +67,7 @@ const addNewTaskToProject = () => {
   );
 };
 
+// Code optimization: taskName und projectName not dynamic enough.
 const deleteTaskFromProject = (e) => {
   const taskName = e.target.parentNode.childNodes[1].textContent;
   const projectName = e.target.parentNode.parentNode.parentNode.id;
