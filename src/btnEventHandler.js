@@ -1,6 +1,7 @@
 import { createTaskPopUpWrite } from "./popUp";
 import { discardTaskPopUpWrite } from "./popUp";
 import { processAndSaveInputValues } from "./toDoListManager";
+import { deleteTaskFromProject } from "./toDoListManager";
 import displayToDoList from "./toDoListHTML";
 
 const addButtonFunctionalityToLandingPage = function () {
@@ -66,10 +67,12 @@ const addEventListenerToUpdateButton = () => {
 const addEventListenerToDeleteButton = () => {
   const deleteButtons = document.querySelectorAll(".btnDelete");
   for (const deleteBtn of deleteButtons) {
-    deleteBtn.addEventListener("click", () => {
+    deleteBtn.addEventListener("click", (e) => {
       alert("delete");
       // delete the task from the project
+      deleteTaskFromProject(e);
       // delete the project from toDoList if it`s the last task which has been deleted
+      displayToDoList();
     });
   }
 };
