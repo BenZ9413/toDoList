@@ -52,6 +52,11 @@ const addNewProject = () => {
   masterToDoList.addProject(`${formValues["project"]}`);
 };
 
+const deleteProjectFromToDoList = (e) => {
+  const projectName = e.target.parentNode.parentNode.parentNode.id;
+  masterToDoList.deleteProject(projectName);
+};
+
 const addNewTaskToProject = () => {
   masterToDoList[`${formValues["project"]}`]["addTask"](
     `${formValues["task"]}`
@@ -82,4 +87,8 @@ const update = () => {
   console.log("updatingToDoList");
 };
 
-export { processAndSaveInputValues, deleteTaskFromProject };
+export {
+  processAndSaveInputValues,
+  deleteTaskFromProject,
+  deleteProjectFromToDoList,
+};
