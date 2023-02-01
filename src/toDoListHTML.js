@@ -26,7 +26,7 @@ const showUpdatedToDoList = () => {
       const projectContent = document.createElement("div");
       projectContent.setAttribute("class", "projectContent");
       for (const tasks in masterToDoList[projects]) {
-        if (tasks !== "addTask") {
+        if (tasks !== "addTask" && tasks !== "deleteTask") {
           const taskContainer = document.createElement("div");
           taskContainer.setAttribute("class", "taskContainer");
           const taskCheckbox = document.createElement("input");
