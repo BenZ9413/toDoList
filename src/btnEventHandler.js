@@ -1,5 +1,6 @@
 import { createTaskPopUpWrite } from "./popUp";
 import { discardTaskPopUpWrite } from "./popUp";
+import { showTaskPopUpWriteWithTaskValues } from "./popUp";
 import { processAndSaveInputValues } from "./toDoListManager";
 import { deleteTaskFromProject } from "./toDoListManager";
 import { deleteProjectFromToDoList } from "./toDoListManager";
@@ -57,9 +58,8 @@ const addEventListenerToCheckbox = () => {
 const addEventListenerToUpdateButton = () => {
   const updateButtons = document.querySelectorAll(".btnUpdate");
   for (const updateBtn of updateButtons) {
-    updateBtn.addEventListener("click", () => {
-      alert("update");
-      // Show the pop up and fill it with all the task details to edit
+    updateBtn.addEventListener("click", (e) => {
+      showTaskPopUpWriteWithTaskValues(e);
     });
   }
 };
