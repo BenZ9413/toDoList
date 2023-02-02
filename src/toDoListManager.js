@@ -84,9 +84,17 @@ const updateTaskDetails = () => {
   );
 };
 
+// Code optimization: taskName und projectName not dynamic enough.
+const toggleCheckedAttribute = (e) => {
+  const taskName = e.target.parentNode.childNodes[1].textContent;
+  const projectName = e.target.parentNode.parentNode.parentNode.id;
+  masterToDoList[projectName][taskName]["toggleChecked"]();
+};
+
 export {
   processAndSaveInputValues,
   deleteTaskFromProject,
   deleteProjectFromToDoList,
   projectHasNoTasksLeft,
+  toggleCheckedAttribute,
 };
