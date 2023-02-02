@@ -4,6 +4,7 @@ import { processAndSaveInputValues } from "./toDoListManager";
 import { deleteTaskFromProject } from "./toDoListManager";
 import { deleteProjectFromToDoList } from "./toDoListManager";
 import { projectHasNoTasksLeft } from "./toDoListManager";
+import { toggleCheckedAttribute } from "./toDoListManager";
 import displayToDoList from "./toDoListHTML";
 
 const addButtonFunctionalityToLandingPage = function () {
@@ -47,11 +48,8 @@ const btnCancelTaskPopUp = function () {
 const addEventListenerToCheckbox = () => {
   const checkboxes = document.querySelectorAll(".taskCheckbox");
   for (const checkbox of checkboxes) {
-    checkbox.addEventListener("click", () => {
-      alert("checked");
-      // IN GENERAL: Add checked status in task object
-      // In this function: change checked status in task object
-      // IN GENERAL: implement checked status in displayToDoList
+    checkbox.addEventListener("click", (e) => {
+      toggleCheckedAttribute(e);
     });
   }
 };
