@@ -63,12 +63,33 @@ const createPopUpCancelButton = function () {
   return cancelButton;
 };
 
-const showTaskPopUpWrite = function () {
-  alert("Task PopUp");
+const showTaskPopUpWriteWithTaskValues = (e) => {
+  createTaskPopUpWrite();
+  fillInTaskValues(e);
+};
+
+//Code optimization: Not dynamic enough
+const fillInTaskValues = (e) => {
+  const taskName = e.target.parentNode.childNodes[1].textContent;
+  const projectName = e.target.parentNode.parentNode.parentNode.id;
+  const priority =
+    e.target.parentNode.querySelector(".taskPriority").textContent;
+  const dueDate = e.target.parentNode.querySelector(".taskDueDate").textContent;
+  const description =
+    e.target.parentNode.querySelector(".taskDescription").textContent;
+  document.querySelector("#formTask").value = taskName;
+  document.querySelector("#formProject").value = projectName;
+  document.querySelector("#formPriority").value = priority;
+  document.querySelector("#formDuedate").value = dueDate;
+  document.querySelector("#formDescription").value = description.slice(0, 50);
 };
 
 const discardTaskPopUpWrite = function (event) {
   event.target.form.remove();
 };
 
-export { createTaskPopUpWrite, showTaskPopUpWrite, discardTaskPopUpWrite };
+export {
+  createTaskPopUpWrite,
+  showTaskPopUpWriteWithTaskValues,
+  discardTaskPopUpWrite,
+};
