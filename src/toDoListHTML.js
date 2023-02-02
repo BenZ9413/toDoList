@@ -34,6 +34,8 @@ const showUpdatedToDoList = () => {
           const taskCheckbox = document.createElement("input");
           taskCheckbox.setAttribute("type", "checkbox");
           taskCheckbox.setAttribute("class", "taskCheckbox");
+          taskCheckbox.checked =
+            masterToDoList[projects][`${tasks}`]["checked"];
           const taskName = document.createElement("div");
           taskName.setAttribute("class", "taskName");
           taskName.textContent = `${tasks}`;
