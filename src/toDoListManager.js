@@ -99,4 +99,5 @@ export {
   projectHasNoTasksLeft,
   toggleCheckedAttribute,
   extractFormValues,
+  formValues,
 };

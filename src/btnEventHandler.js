@@ -9,37 +9,35 @@ import { projectHasNoTasksLeft } from "./toDoListManager";
 import { toggleCheckedAttribute } from "./toDoListManager";
 import displayToDoList from "./toDoListHTML";
 
-const addButtonFunctionalityToLandingPage = function () {
-  btnNewTaskClick();
-};
+// ---- Landing Page ----
+// Modular approach to easy add more buttons
+const addButtonFunctionalityToLandingPage = () => btnNewTaskClickShowPopUp();
 
-const addEventListenersToTaskButtons = () => {
-  addEventListenerToCheckbox();
-  addEventListenerToUpdateButton();
-  addEventListenerToDeleteButton();
-};
-
-const btnNewTaskClick = function () {
+const btnNewTaskClickShowPopUp = () => {
   const btnNewTask = document.querySelector("#btnNewTask");
   btnNewTask.addEventListener("click", createTaskPopUpWrite);
 };
 
-const addEventListenersToPopUpForm = function () {
-  btnSaveTaskPopUp();
-  btnCancelTaskPopUp();
+// ---- Pop Up Form ----
+// Modular approach to easy add more buttons
+const addEventListenersToPopUpForm = () => {
+  addEventListenerToBtnSaveTaskPopUp();
+  addEventListenerToBtnCancelTaskPopUp();
 };
 
-const btnSaveTaskPopUp = function () {
+const addEventListenerToBtnSaveTaskPopUp = () => {
   const btn = document.querySelector("#popUpSaveBtn");
-  btn.addEventListener("click", (e) => {
-    e.preventDefault();
-    processAndSaveInputValues();
-    discardTaskPopUpWrite(e);
-    displayToDoList();
-  });
+  btn.addEventListener("click", saveInputHidePopUpAndShowToDoList);
 };
 
-const btnCancelTaskPopUp = function () {
+const saveInputHidePopUpAndShowToDoList = (e) => {
+  e.preventDefault();
+  processAndSaveInputValues();
+  discardTaskPopUpWrite(e);
+  displayToDoList();
+};
+
+const addEventListenerToBtnCancelTaskPopUp = () => {
   const btn = document.querySelector("#popUpCancelBtn");
   btn.addEventListener("click", cancelPopUp);
 };
@@ -49,52 +47,70 @@ const cancelPopUp = (e) => {
   discardTaskPopUpWrite(e);
 };
 
-const addEventListenerToCheckbox = () => {
+// ---- Buttons on ToDoList ----
+// Modular approach to easy add more buttons
+const addEventListenersToTaskButtons = () => {
+  addEventListenerToAllCheckboxes();
+  addEventListenerToAllUpdateButtons();
+  addEventListenerToAllDeleteButtons();
+};
+
+const addEventListenerToAllCheckboxes = () => {
   const checkboxes = document.querySelectorAll(".taskCheckbox");
   for (const checkbox of checkboxes) {
-    checkbox.addEventListener("click", (e) => {
-      toggleCheckedAttribute(e);
-    });
+    checkbox.addEventListener("click", toggleCheckedAttribute);
   }
 };
 
-const addEventListenerToUpdateButton = () => {
+const addEventListenerToAllUpdateButtons = () => {
   const updateButtons = document.querySelectorAll(".btnUpdate");
   for (const updateBtn of updateButtons) {
-    updateBtn.addEventListener("click", (e) => {
-      const oldTaskValues = showTaskPopUpWriteWithTaskValues(e);
-      removeOldEventListenerFromCancelBtn();
-      addNewEventListenerToCancelButtonPopUp(oldTaskValues);
-      deleteTaskFromProject(e);
-      if (projectHasNoTasksLeft(e)) deleteProjectFromToDoList(e);
-    });
+    updateBtn.addEventListener(
+      "click",
+      showPopUpBufferCurrentTaskAndDeleteItFromToDoListObject
+    );
   }
 };
 
-const removeOldEventListenerFromCancelBtn = () => {
+const showPopUpBufferCurrentTaskAndDeleteItFromToDoListObject = (e) => {
+  const oldTaskValues = showTaskPopUpWriteWithTaskValues(e);
+  removeOldEventListenerFromCancelBtnPopUp();
+  addNewEventListenerToCancelBtnPopUp();
+  deleteTaskFromProject(e);
+  if (projectHasNoTasksLeft(e)) deleteProjectFromToDoList(e);
+};
+
+const removeOldEventListenerFromCancelBtnPopUp = () => {
   const btnRemove = document.querySelector("#popUpCancelBtn");
   btnRemove.removeEventListener("click", cancelPopUp);
 };
 
-const addNewEventListenerToCancelButtonPopUp = (oldTaskValues) => {
+const addNewEventListenerToCancelBtnPopUp = () => {
   const btn = document.querySelector("#popUpCancelBtn");
-  btn.addEventListener("click", (e) => {
-    e.preventDefault();
-    fillInOldTaskValues(oldTaskValues);
-    processAndSaveInputValues();
-    discardTaskPopUpWrite(e);
-  });
+  btn.addEventListener("click", fillInPopUpOldBufferedTaskValuesAndSaveThem);
 };
 
-const addEventListenerToDeleteButton = () => {
+const fillInPopUpOldBufferedTaskValuesAndSaveThem = (e) => {
+  e.preventDefault();
+  fillInOldTaskValues();
+  processAndSaveInputValues();
+  discardTaskPopUpWrite(e);
+};
+
+const addEventListenerToAllDeleteButtons = () => {
   const deleteButtons = document.querySelectorAll(".btnDelete");
   for (const deleteBtn of deleteButtons) {
-    deleteBtn.addEventListener("click", (e) => {
-      deleteTaskFromProject(e);
-      if (projectHasNoTasksLeft(e)) deleteProjectFromToDoList(e);
-      displayToDoList();
-    });
+    deleteBtn.addEventListener(
+      "click",
+      deleteTaskAndIfLastThenProjectAndDisplayToDoList
+    );
   }
+};
+
+const deleteTaskAndIfLastThenProjectAndDisplayToDoList = (e) => {
+  deleteTaskFromProject(e);
+  if (projectHasNoTasksLeft(e)) deleteProjectFromToDoList(e);
+  displayToDoList();
 };
 
 export {

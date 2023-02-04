@@ -1,5 +1,6 @@
 import { addEventListenersToPopUpForm } from "./btnEventHandler";
 import { extractFormValues } from "./toDoListManager";
+import { formValues } from "./toDoListManager";
 
 const formInputs = {
   attributes: ["type", "id", "name", "placeholder"],
@@ -86,16 +87,14 @@ const fillInTaskValues = (e) => {
   document.querySelector("#formDescription").value = description.slice(0, 50);
 };
 
-const fillInOldTaskValues = (oldTaskValues) => {
-  document.querySelector("#formTask").value = `${oldTaskValues["task"]}`;
-  document.querySelector("#formProject").value = `${oldTaskValues["project"]}`;
-  document.querySelector(
-    "#formPriority"
-  ).value = `${oldTaskValues["priority"]}`;
-  document.querySelector("#formDuedate").value = `${oldTaskValues["duedate"]}`;
+const fillInOldTaskValues = () => {
+  document.querySelector("#formTask").value = `${formValues["task"]}`;
+  document.querySelector("#formProject").value = `${formValues["project"]}`;
+  document.querySelector("#formPriority").value = `${formValues["priority"]}`;
+  document.querySelector("#formDuedate").value = `${formValues["duedate"]}`;
   document.querySelector(
     "#formDescription"
-  ).value = `${oldTaskValues["description"]}`;
+  ).value = `${formValues["description"]}`;
 };
 
 const discardTaskPopUpWrite = function (event) {
