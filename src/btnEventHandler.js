@@ -73,7 +73,7 @@ const addEventListenerToAllUpdateButtons = () => {
 };
 
 const showPopUpBufferCurrentTaskAndDeleteItFromToDoListObject = (e) => {
-  const oldTaskValues = showTaskPopUpWriteWithTaskValues(e);
+  showTaskPopUpWriteWithTaskValues(e);
   removeOldEventListenerFromCancelBtnPopUp();
   addNewEventListenerToCancelBtnPopUp();
   deleteTaskFromProject(e);
