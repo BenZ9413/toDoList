@@ -2,11 +2,11 @@ import { showTaskPopUp } from "./popUpHandler";
 import { discardTaskPopUp } from "./popUpHandler";
 import { showTaskPopUpWithTaskValues } from "./popUpHandler";
 import { fillInOldTaskValues } from "./popUpHandler";
-import { processAndSaveInputValues } from "./toDoListManager";
-import { deleteTaskFromProject } from "./toDoListManager";
-import { deleteProjectFromToDoList } from "./toDoListManager";
-import { projectHasNoTasksLeft } from "./toDoListManager";
-import { toggleCheckedAttribute } from "./toDoListManager";
+import { processAndSaveInputValues } from "./toDoListHandler";
+import { deleteTaskFromProject } from "./toDoListHandler";
+import { deleteProjectFromToDoList } from "./toDoListHandler";
+import { projectHasNoTasksLeft } from "./toDoListHandler";
+import { toggleCheckedAttribute } from "./toDoListHandler";
 import displayToDoList from "./toDoListHTML";
 
 // ---- Landing Page ----
