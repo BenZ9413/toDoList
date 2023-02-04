@@ -1,7 +1,7 @@
-import { createTaskPopUpWrite } from "./popUp";
-import { discardTaskPopUpWrite } from "./popUp";
-import { showTaskPopUpWriteWithTaskValues } from "./popUp";
-import { fillInOldTaskValues } from "./popUp";
+import { showTaskPopUp } from "./popUpHandler";
+import { discardTaskPopUp } from "./popUpHandler";
+import { showTaskPopUpWithTaskValues } from "./popUpHandler";
+import { fillInOldTaskValues } from "./popUpHandler";
 import { processAndSaveInputValues } from "./toDoListManager";
 import { deleteTaskFromProject } from "./toDoListManager";
 import { deleteProjectFromToDoList } from "./toDoListManager";
@@ -15,7 +15,7 @@ const addButtonFunctionalityToLandingPage = () => btnNewTaskClickShowPopUp();
 
 const btnNewTaskClickShowPopUp = () => {
   const btnNewTask = document.querySelector("#btnNewTask");
-  btnNewTask.addEventListener("click", createTaskPopUpWrite);
+  btnNewTask.addEventListener("click", showTaskPopUp);
 };
 
 // ---- Pop Up Form ----
@@ -33,7 +33,7 @@ const addEventListenerToBtnSaveTaskPopUp = () => {
 const saveInputHidePopUpAndShowToDoList = (e) => {
   e.preventDefault();
   processAndSaveInputValues();
-  discardTaskPopUpWrite(e);
+  discardTaskPopUp(e);
   displayToDoList();
 };
 
@@ -44,7 +44,7 @@ const addEventListenerToBtnCancelTaskPopUp = () => {
 
 const cancelPopUp = (e) => {
   e.preventDefault();
-  discardTaskPopUpWrite(e);
+  discardTaskPopUp(e);
 };
 
 // ---- Buttons on ToDoList ----
@@ -73,7 +73,7 @@ const addEventListenerToAllUpdateButtons = () => {
 };
 
 const showPopUpBufferCurrentTaskAndDeleteItFromToDoListObject = (e) => {
-  showTaskPopUpWriteWithTaskValues(e);
+  showTaskPopUpWithTaskValues(e);
   removeOldEventListenerFromCancelBtnPopUp();
   addNewEventListenerToCancelBtnPopUp();
   deleteTaskFromProject(e);
@@ -94,7 +94,7 @@ const fillInPopUpOldBufferedTaskValuesAndSaveThem = (e) => {
   e.preventDefault();
   fillInOldTaskValues();
   processAndSaveInputValues();
-  discardTaskPopUpWrite(e);
+  discardTaskPopUp(e);
 };
 
 const addEventListenerToAllDeleteButtons = () => {
