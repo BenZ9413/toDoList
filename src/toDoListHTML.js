@@ -1,11 +1,4 @@
 import masterToDoList from "./toDoListObject";
-import { addEventListenersToTaskButtons } from "./btnEventHandler";
-
-const displayToDoList = () => {
-  deleteOldToDoList();
-  showUpdatedToDoList();
-  addEventListenersToTaskButtons();
-};
 
 const deleteOldToDoList = () => {
   if (document.querySelector("#toDoList") == null) return;
@@ -78,4 +71,4 @@ const showUpdatedToDoList = () => {
   main.appendChild(toDoListContainer);
 };
 
-export default displayToDoList;
+export { deleteOldToDoList, showUpdatedToDoList };

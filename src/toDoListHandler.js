@@ -1,6 +1,15 @@
 import masterToDoList from "./toDoListObject";
+import { showUpdatedToDoList } from "./toDoListHTML";
+import { deleteOldToDoList } from "./toDoListHTML";
 import { formValues } from "./popUpHandler";
 import { extractFormValues } from "./popUpHandler";
+import { addEventListenersToTaskButtons } from "./btnEventHandler";
+
+const displayToDoList = () => {
+  deleteOldToDoList();
+  showUpdatedToDoList();
+  addEventListenersToTaskButtons();
+};
 
 const processAndSaveInputValues = () => {
   extractFormValues();
@@ -84,6 +93,7 @@ const toggleCheckedAttribute = (e) => {
 };
 
 export {
+  displayToDoList,
   processAndSaveInputValues,
   deleteTaskFromProject,
   deleteProjectFromToDoList,

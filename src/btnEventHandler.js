@@ -7,7 +7,7 @@ import { deleteTaskFromProject } from "./toDoListHandler";
 import { deleteProjectFromToDoList } from "./toDoListHandler";
 import { projectHasNoTasksLeft } from "./toDoListHandler";
 import { toggleCheckedAttribute } from "./toDoListHandler";
-import displayToDoList from "./toDoListHTML";
+import { displayToDoList } from "./toDoListHandler";
 
 // ---- Landing Page ----
 // Modular approach to easy add more buttons
