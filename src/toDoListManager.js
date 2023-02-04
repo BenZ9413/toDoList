@@ -11,15 +11,6 @@ const processAndSaveInputValues = () => {
   }
 };
 
-const saveOldTaskAndProject = () => {
-  const form = document.querySelector("form");
-  const listOfInputs = form.querySelectorAll("input");
-  for (let i = 0; i < listOfInputs.length; i++) {
-    formValues[`${listOfInputs[i].name}`] = listOfInputs[i].value;
-  }
-  return formValues;
-};
-
 const extractFormValues = () => {
   const form = document.querySelector("form");
   const listOfInputs = form.querySelectorAll("input");
@@ -108,5 +99,4 @@ export {
   projectHasNoTasksLeft,
   toggleCheckedAttribute,
   extractFormValues,
-  saveOldTaskAndProject,
 };
