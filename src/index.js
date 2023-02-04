@@ -1,4 +1,4 @@
 import "./css.css";
-import loadLandingPage from "./landingPage";
+import loadLandingPage from "./landingPageHandler";
 
 loadLandingPage();
