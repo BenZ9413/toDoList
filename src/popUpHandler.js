@@ -1,7 +1,7 @@
 import createTaskPopUp from "./popUpHTML";
 import { addEventListenersToPopUpForm } from "./btnEventHandler";
-import { extractFormValues } from "./toDoListManager";
-import { formValues } from "./toDoListManager";
+
+const formValues = {};
 
 const showTaskPopUp = () => {
   createTaskPopUp();
@@ -9,6 +9,14 @@ const showTaskPopUp = () => {
   //document.querySelector(
   //  "#formDuedate"
   //).defaultValue = `${new Date().getDate()}.${new Date().getMonth()}.${new Date().getFullYear()}`;
+};
+
+const extractFormValues = () => {
+  const form = document.querySelector("form");
+  const listOfInputs = form.querySelectorAll("input");
+  for (let i = 0; i < listOfInputs.length; i++) {
+    formValues[`${listOfInputs[i].name}`] = listOfInputs[i].value;
+  }
 };
 
 const showTaskPopUpWithTaskValues = (e) => {
@@ -50,6 +58,8 @@ const discardTaskPopUp = (e) => {
 export {
   showTaskPopUp,
   showTaskPopUpWithTaskValues,
-  discardTaskPopUp,
   fillInOldTaskValues,
+  discardTaskPopUp,
+  formValues,
+  extractFormValues,
 };

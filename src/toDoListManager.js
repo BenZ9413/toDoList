@@ -1,6 +1,6 @@
 import masterToDoList from "./toDoListObject";
-
-const formValues = {};
+import { formValues } from "./popUpHandler";
+import { extractFormValues } from "./popUpHandler";
 
 const processAndSaveInputValues = () => {
   extractFormValues();
@@ -9,15 +9,6 @@ const processAndSaveInputValues = () => {
   } else {
     saveNewProjectAndTask();
   }
-};
-
-const extractFormValues = () => {
-  const form = document.querySelector("form");
-  const listOfInputs = form.querySelectorAll("input");
-  for (let i = 0; i < listOfInputs.length; i++) {
-    formValues[`${listOfInputs[i].name}`] = listOfInputs[i].value;
-  }
-  return formValues;
 };
 
 const saveOrUpdateTask = () => {
@@ -98,6 +89,4 @@ export {
   deleteProjectFromToDoList,
   projectHasNoTasksLeft,
   toggleCheckedAttribute,
-  extractFormValues,
-  formValues,
 };
