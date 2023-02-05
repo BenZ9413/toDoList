@@ -32,7 +32,7 @@ const addEventListenerToBtnSaveTaskPopUp = () => {
 
 const saveInputHidePopUpAndShowToDoList = (e) => {
   e.preventDefault();
-  processAndSaveInputValues();
+  if (!processAndSaveInputValues(e)) return;
   discardTaskPopUp(e);
   displayToDoList();
 };
@@ -93,7 +93,7 @@ const addNewEventListenerToCancelBtnPopUp = () => {
 const fillInPopUpOldBufferedTaskValuesAndSaveThem = (e) => {
   e.preventDefault();
   fillInOldTaskValues();
-  processAndSaveInputValues();
+  processAndSaveInputValues(e);
   discardTaskPopUp(e);
 };
 

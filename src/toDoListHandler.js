@@ -11,17 +11,28 @@ const displayToDoList = () => {
   addEventListenersToTaskButtons();
 };
 
-const processAndSaveInputValues = () => {
-  extractFormValues();
+const overwriteAnotherTask = () => {
+  if (!taskExistsInProject()) return true;
+  if (confirm("Task already exists. Do you really want to overwrite?")) {
+    return true;
+  } else {
+    return false;
+  }
+};
+
+const processAndSaveInputValues = (e) => {
+  extractFormValues(e);
+  if (!overwriteAnotherTask()) return false;
   if (projectExists()) {
     saveOrUpdateTask();
   } else {
     saveNewProjectAndTask();
   }
+  return true;
 };
 
 const saveOrUpdateTask = () => {
-  if (!taskExists()) addNewTaskToProject();
+  if (!taskExistsInProject()) addNewTaskToProject();
   updateTaskDetails();
 };
 
@@ -38,7 +49,7 @@ const projectExists = () => {
   return false;
 };
 
-const taskExists = () => {
+const taskExistsInProject = () => {
   for (const tasks in masterToDoList[`${formValues["project"]}`]) {
     if (tasks == formValues["task"]) return true;
   }

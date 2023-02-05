@@ -2,6 +2,7 @@ import createTaskPopUp from "./popUpHTML";
 import { addEventListenersToPopUpForm } from "./btnEventHandler";
 
 const formValues = {};
+const oldTaskValues = {};
 
 const showTaskPopUp = () => {
   createTaskPopUp();
@@ -11,18 +12,26 @@ const showTaskPopUp = () => {
   //).defaultValue = `${new Date().getDate()}.${new Date().getMonth()}.${new Date().getFullYear()}`;
 };
 
-const extractFormValues = () => {
+const extractFormValues = (e) => {
   const form = document.querySelector("form");
   const listOfInputs = form.querySelectorAll("input");
-  for (let i = 0; i < listOfInputs.length; i++) {
-    formValues[`${listOfInputs[i].name}`] = listOfInputs[i].value;
+  if (e.target.className == "btnUpdate") {
+    for (let i = 0; i < listOfInputs.length; i++) {
+      oldTaskValues[`${listOfInputs[i].name}`] = listOfInputs[i].value;
+    }
+  } else {
+    for (let i = 0; i < listOfInputs.length; i++) {
+      formValues[`${listOfInputs[i].name}`] = listOfInputs[i].value;
+    }
   }
+  console.log(formValues);
+  console.log(oldTaskValues);
 };
 
 const showTaskPopUpWithTaskValues = (e) => {
   showTaskPopUp();
   fillInTaskValues(e);
-  return extractFormValues();
+  extractFormValues(e);
 };
 
 //Code optimization: Not dynamic enough
@@ -42,13 +51,15 @@ const fillInTaskValues = (e) => {
 };
 
 const fillInOldTaskValues = () => {
-  document.querySelector("#formTask").value = `${formValues["task"]}`;
-  document.querySelector("#formProject").value = `${formValues["project"]}`;
-  document.querySelector("#formPriority").value = `${formValues["priority"]}`;
-  document.querySelector("#formDuedate").value = `${formValues["duedate"]}`;
+  document.querySelector("#formTask").value = `${oldTaskValues["task"]}`;
+  document.querySelector("#formProject").value = `${oldTaskValues["project"]}`;
+  document.querySelector(
+    "#formPriority"
+  ).value = `${oldTaskValues["priority"]}`;
+  document.querySelector("#formDuedate").value = `${oldTaskValues["duedate"]}`;
   document.querySelector(
     "#formDescription"
-  ).value = `${formValues["description"]}`;
+  ).value = `${oldTaskValues["description"]}`;
 };
 
 const discardTaskPopUp = (e) => {
